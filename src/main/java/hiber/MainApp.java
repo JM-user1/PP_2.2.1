@@ -16,14 +16,17 @@ public class MainApp {
 
       UserService userService = context.getBean(UserService.class);
 
-      userService.add(new User("User1", "Lastname1", "user1@mail.ru")
-          ,new Car("BMV",3));
-      userService.add(new User("User2", "Lastname2", "user2@mail.ru")
-          ,new Car("Land Cruiser",200));
-      userService.add(new User("User3", "Lastname3", "user3@mail.ru")
-          ,new Car("Moskvich",412));
-      userService.add(new User("User4", "Lastname4", "user4@mail.ru")
-          ,new Car("ZIL",130));
+      userService.add(new Car("ZIL",130),new User("User4", "Lastname4", "user4@mail.ru"));
+
+//      userService.add(new User("User1", "Lastname1", "user1@mail.ru")
+//          ,new Car("BMV",3));
+//      userService.add(new User("User2", "Lastname2", "user2@mail.ru")
+//          ,new Car("Land Cruiser",200));
+//      userService.add(new User("User3", "Lastname3", "user3@mail.ru")
+//          ,new Car("Moskvich",412));
+//      userService.add(new User("User4", "Lastname4", "user4@mail.ru")
+//          ,new Car("ZIL",130));
+
 
 
 
@@ -38,7 +41,7 @@ public class MainApp {
          System.out.println();
       }
 
-      System.out.println("Хозяин Moskvich 412: "+userService.getCarUser("Moskvich",412).getLastName());
+//      System.out.println("Хозяин Moskvich 412: "+userService.getCarUser("Moskvich",412).getLastName());
 
       context.close();
    }

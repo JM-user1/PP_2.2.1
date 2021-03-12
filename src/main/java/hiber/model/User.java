@@ -8,8 +8,9 @@ public class User {
 
    @Id
 //   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   @GeneratedValue(strategy = GenerationType.SEQUENCE)
-   @Column(name = "id")
+//   @SequenceGenerator(name = "hiberSeq", sequenceName = "HIBERNATE_SEQUENCE")
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+//   @Column(name = "id")
    private Long id;
 
    @Column(name = "name")
@@ -24,8 +25,9 @@ public class User {
 //   @OneToOne(cascade = CascadeType.ALL)
 //   @JoinColumn(name = "car_id")
 
-   @OneToOne(mappedBy = "user"
-      , cascade = CascadeType.ALL,optional = false, fetch = FetchType.LAZY)
+//   @OneToOne(mappedBy = "user"
+//      , cascade = CascadeType.ALL,optional = false, fetch = FetchType.LAZY)
+   @OneToOne//(mappedBy = "user", cascade = CascadeType.ALL)
    private Car userCar;
 
    public User() {}
