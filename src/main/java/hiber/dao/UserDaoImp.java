@@ -24,10 +24,13 @@ public class UserDaoImp implements UserDao {
    public User getCarUser(String model, int series){
       Session session = sessionFactory.openSession();
       session.beginTransaction();
-      TypedQuery<Car> query = session.createQuery("FROM Car car where car.model ='"+ model +"' AND car.series = "+series);
-      Car newCar = query.getSingleResult();
+      TypedQuery<User> query = session.createQuery("SELECT user from User user where" +
+              " user.userCar.model = (:setModel) AND user.userCar.series = (:setSeries)",User.class);
+      query.setParameter("setModel",model);
+      query.setParameter("setSeries", series);
+      User newUser = query.getSingleResult();
       session.close();
-      return newCar.getUser();
+      return newUser;
    }
 
    @Override
@@ -37,18 +40,4 @@ public class UserDaoImp implements UserDao {
       return query.getResultList();
    }
 
-//   @Override
-//   public boolean equals(Object o){
-//      if(o == null || o.getClass() != this.getClass()){
-//         return false;
-//      }
-//      if(o.getClass() == User.class){
-//         User equalsUser = (User) o;
-//         return this.user.getId().equals(equalsUser.getId())
-//             && (this.user.getFirstName().equals(equalsUser.getFirstName())
-//             && this.user.getLastName().equals(equalsUser.getLastName())
-//             && this.user.getEmail().equals(equalsUser.getEmail()));
-//      }
-//      return false;
-//   }
 }
