@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "cars")
 public class Car {
+
   @Id
   @GeneratedValue (strategy = GenerationType.IDENTITY)
   @Column(name = "id")
@@ -16,13 +17,8 @@ public class Car {
   @Column(name = "series")
   private int series;
 
-//  @OneToOne(mappedBy = "userCar"
-//      , cascade = CascadeType.ALL)
 
-  @OneToOne(fetch = FetchType.LAZY)
-  @MapsId
-  @JoinColumn(name = "id")
-
+  @OneToOne(mappedBy = "userCar", cascade = CascadeType.ALL)
   private User user;
 
   public Car() {
